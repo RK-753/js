@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Webpage</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #a1beea, #feb47b);
+            background-size: 200% 200%; /* For smooth animation */
+            animation: gradientMotion 5s infinite alternate; /* Animation */
+            flex-direction: column;
+        }
+
+        @keyframes gradientMotion {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        h1 {
+            font-size: 6em;
+        }
+    </style>
+</head>
+<body>
+    <h1>change background color</h1>
+    
+    <label for="color" style="font-size: 2em;">choose a color</label>
+
+    <select id="color" style="font-size: 1.5em;" onchange="document.body.style.background = this.value;">
+        <option value="white">white</option>
+        <option value="blue">blue</option>
+        <option value="green">green</option>
+        <option value="yellow">yellow</option>
+        <option value="pink">pink</option>
+        <option value="purple">purple</option>
+        <option value="orange">orange</option>
+        <option value="black">black</option>
+        <option value="red">red</option>
+        <option value="lime">lime</option>
+        <option value="brown">brown</option>
+        <option value="skyblue">skyblue</option>
+    </select>
+</body>
+</html>
