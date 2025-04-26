@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Calculator</title>
+    <style>
+        
+        h1 {
+            color: rgb(29, 2, 61);
+            font-family: 'Courier New', monospace;
+            font-size: 60px;
+          
+        }
+        button {
+            background-color: lightgray;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input {
+            width: 200px;
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div style="text-align: center; margin-top: 50px;">
+        <h1>Simple Calculator</h1>
+
+        <input type="number" id="input1" placeholder="Enter first number" />
+        <input type="number" id="input2" placeholder="Enter second number" />
+       
+        <input type="hidden" id="operation" />
+
+        <br>
+        <br>
+        
+        <button onmouseover="this.style.backgroundColor='lightblue'" onmouseout="this.style.backgroundColor=''" onclick="setOperation('add')">Add</button>
+
+        <button onmouseover="this.style.backgroundColor='lightblue'" onmouseout="this.style.backgroundColor=''" onclick="setOperation('subtract')">Subtract</button>
+
+        <button onmouseover="this.style.backgroundColor='lightblue'" onmouseout="this.style.backgroundColor=''" onclick="setOperation('multiply')">Multiply</button>
+
+        <button onmouseover="this.style.backgroundColor='lightblue'" onmouseout="this.style.backgroundColor=''" onclick="setOperation('divide')">Divide</button>
+
+        <button onmouseover="this.style.backgroundColor='lightblue'" onmouseout="this.style.backgroundColor=''" onclick="setOperation('modulus')">Modulus</button>
+
+        <br>
+
+        <button onmouseover="this.style.backgroundColor='lightblue'" onmouseout="this.style.backgroundColor=''" onclick="setOperation('double')">Double</button>
+
+        <button onmouseover="this.style.backgroundColor='lightblue'" onmouseout="this.style.backgroundColor=''" onclick="setOperation('sqrt')">Square Root</button>
+
+        <button onmouseover="this.style.backgroundColor='lightblue'" onmouseout="this.style.backgroundColor=''" onclick="setOperation('power')">Power</button>
+
+        <br>
+
+        <button onmouseover="this.style.backgroundColor='yellow'" onmouseout="this.style.backgroundColor=''" onclick="clearInputs()">Clear</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function setOperation(op) {
+            document.getElementById('operation').value = op;
+            calculate();
+        }
+
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('input1').value);
+            const num2 = parseFloat(document.getElementById('input2').value);
+            const operation = document.getElementById('operation').value;
+            let result;
+
+            if (isNaN(num1) && operation !== 'sqrt' && operation !== 'double') {
+                result = "Please enter valid numbers.";
+            } else {
+                switch (operation) {
+                    case 'add':
+                        result = num1 + num2;
+                        break;
+                    case 'subtract':
+                        result = num1 - num2;
+                        break;
+                    case 'multiply':
+                        result = num1 * num2;
+                        break;
+                    case 'divide':
+                        result = num2 !== 0 ? num1 / num2 : "Cannot divide by zero.";
+                        break;
+                    case 'modulus':
+                        result = num2 !== 0 ? num1 % num2 : "Cannot perform modulus by zero.";
+                        break;
+                    case 'double':
+                        result = num1 * 2;
+                        break;
+                    case 'sqrt':
+                        result = num1 >= 0 ? Math.sqrt(num1) : "Cannot calculate square root of a negative number.";
+                        break;
+                    case 'power':
+                        result = Math.pow(num1, num2);
+                        break;
+                    default:
+                        result = "Invalid operation.";
+                }
+            }
+
+            document.getElementById('result').textContent = `Result: ${result}`;
+        }
+
+        function clearInputs() {
+            document.getElementById('input1').value = '';
+            document.getElementById('input2').value = '';
+            document.getElementById('operation').value = '';
+            document.getElementById('result').textContent = '';
+        }
+    </script>
+</body>
+
+</html>
