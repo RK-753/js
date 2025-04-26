@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      .form-container {
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .form-container:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+      input,
+      option,
+      select {
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        width: 80%;
+        max-width: 300px;
+      }
+      button {
+        padding: 10px 20px;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>FORM</h1>
+      <input type="text" id="name1" placeholder="First name" />
+      <input type="text" id="name2" placeholder="Last name" />
+      <input type="number" id="roll" placeholder="Enrollment number" />
+      <input type="text" id="course" placeholder="Course name" />
+
+      <select id="sem">
+        <option value="" disabled selected>Select Semester</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+
+      <select id="uni">
+        <option value="" disabled selected>Select University</option>
+        <option value="PIT">PIT</option>
+        <option value="PIET">PIET</option>
+      </select>
+
+      <input type="text" id="email" placeholder="Email" />
+      <input type="number" id="phone" placeholder="Phone number" />
+      <button onclick="Form()">Submit</button>
+    </div>
+
+    <script>
+      let text = "welcome to parul university";
+
+      function Form() {
+        let detail = {};
+        detail.name1 = document.getElementById("name1").value.toUpperCase();
+        detail.name2 = document.getElementById("name2").value.toUpperCase();
+        detail.roll = document.getElementById("roll").value.toUpperCase();
+        detail.course = document.getElementById("course").value.toUpperCase();
+        detail.sem = document.getElementById("sem").value.toUpperCase();
+        detail.uni = document.getElementById("uni").value.toUpperCase();
+        detail.email = document.getElementById("email").value;
+        detail.phone = document.getElementById("phone").value.toUpperCase();
+        if (detail.phone.length !== 10) {
+          alert("Phone number must be 10 digits!");
+          return;
+        }
+
+        console.log(detail);
+        document.write(
+          "<table border='1' style='width: 50%; margin: 20px auto; text-align: left; border-collapse: collapse;'>"
+        );
+        document.write(
+          "<tr><th colspan='2' style='text-align: center; padding: 10px;'>STUDENT DETAILS</th></tr>"
+        );
+        document.write(
+          "<tr><td style='padding: 10px;'>First name</td><td style='padding: 10px;'>" +
+            detail.name1 +
+            "</td></tr>"
+        );
+        document.write(
+          "<tr><td style='padding: 10px;'>Last name</td><td style='padding: 10px;'>" +
+            detail.name2 +
+            "</td></tr>"
+        );
+        document.write(
+          "<tr><td style='padding: 10px;'>Enrollment number</td><td style='padding: 10px;'>" +
+            detail.roll +
+            "</td></tr>"
+        );
+        document.write(
+          "<tr><td style='padding: 10px;'>Course name</td><td style='padding: 10px;'>" +
+            detail.course +
+            "</td></tr>"
+        );
+        document.write(
+          "<tr><td style='padding: 10px;'>Semester</td><td style='padding: 10px;'>" +
+            detail.sem +
+            "</td></tr>"
+        );
+        document.write(
+          "<tr><td style='padding: 10px;'>University name</td><td style='padding: 10px;'>" +
+            detail.uni +
+            "</td></tr>"
+        );
+        document.write(
+          "<tr><td style='padding: 10px;'>Email</td><td style='padding: 10px;'>" +
+            detail.email +
+            "</td></tr>"
+        );
+        document.write(
+          "<tr><td style='padding: 10px;'>Phone number</td><td style='padding: 10px;'>" +
+            detail.phone +
+            "</td></tr>"
+        );
+        document.write("</table>");
+      }
+    </script>
+  </body>
+</html>
